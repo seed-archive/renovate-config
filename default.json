@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "github>ethberry/renovate-config:rules"
+  ],
+  "hostRules": [
+    {
+      "matchHost": "https://npm.pkg.github.com/",
+      "hostType": "npm",
+      "token": "{{ secrets.GITHUB_TOKEN_SEED_ARCHIVE }}"
+    }
+  ],
+  "npmrc": "@ethberry:registry=https://npm.pkg.github.com/",
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    }
+  ]
+}
