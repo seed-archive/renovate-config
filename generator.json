@@ -1,0 +1,28 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "The preset of a Seed Archive generator: a private Rust workspace in generator/ and Python utilities pinned in requirements.txt. No CI, so nothing merges itself.",
+  "extends": [
+    "config:recommended",
+    ":semanticCommits",
+    "group:allNonMajor"
+  ],
+  "enabledManagers": ["cargo", "pip_requirements"],
+  "timezone": "Asia/Tbilisi",
+  "schedule": ["before 5am on Saturday"],
+  "automerge": false,
+  "dependencyDashboard": true,
+  "major": {
+    "dependencyDashboardApproval": true
+  },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 5am on Saturday"]
+  },
+  "packageRules": [
+    {
+      "description": "Python packages stay pinned exactly, as the generators' rules require.",
+      "matchManagers": ["pip_requirements"],
+      "rangeStrategy": "pin"
+    }
+  ]
+}
